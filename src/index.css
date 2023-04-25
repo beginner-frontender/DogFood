@@ -1,6 +1,30 @@
 body{
   background-color: rgb(166, 238, 238);
+  font-family: sans-serif;
 }
 p{
   color: rgb(6, 6, 105);
+  font-size: 20px;
+}
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.promo__block {
+  border: 1px solid;
+  border-radius: 8px;
+  position: relative;
+}
+.promo__text {
+  padding: 10px 20px;
+}
+.promo__img {
+  background-image: radial-gradient(circle ,rgb(168, 240, 25), rgb(12, 106, 172));
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  background-size: contain;
+  right: 20px;
+  top: calc(50% - 20px);
 }

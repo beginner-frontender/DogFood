@@ -6,9 +6,10 @@ import {
     PersonCircle, 
     BuildingUp, 
     BuildingDown
-} from "react-bootstrap-icons"
+} from "react-bootstrap-icons";
+import Search from "../Search";
 
-const Header = ({user, upd}) => {
+const Header = ({user, upd, searchArr, setGoods, setSearchResult}) => {
     const login = () => {
         localStorage.setItem("user12", "Yuliya");
         upd("Yuliya");
@@ -20,7 +21,9 @@ const Header = ({user, upd}) => {
     return (
         <header>
             <Logo/>
-            <div className="search-blok"></div>
+            <div className="search-block">
+                <Search data={searchArr} setGoods={setGoods} setSearchResult={setSearchResult}/>
+            </div>
             <nav className="header__menu">
                 {user && <>
                     <a href="">

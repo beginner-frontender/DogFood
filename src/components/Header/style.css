@@ -1,4 +1,20 @@
 header {
-    background: rgb(198, 239, 47);
+    background: yellow;
     padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.header__menu,
+.header__menu>span {
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.header__menu>span>* {
+    cursor: pointer;
+}
+.header__menu svg:hover{
+    fill: blue;
 }

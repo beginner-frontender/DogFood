@@ -1,28 +1,38 @@
 import "./style.css";
 import Logo from "../Logo";
 import {
-    BalloonHeart,
-    Cart4,
+    BalloonHeart, 
+    Cart4, 
     PersonCircle, 
     BuildingUp, 
     BuildingDown
 } from "react-bootstrap-icons";
 import Search from "../Search";
 
-const Header = ({user, upd, searchArr, setGoods, setSearchResult}) => {
+const Header = ({       
+    user, 
+    upd, 
+    searchArr,
+    setGoods, 
+    setSearchResult,
+    setModalOpen
+    }) => {
     const login = () => {
-        localStorage.setItem("user12", "Yuliya");
-        upd("Yuliya");
+        setModalOpen(true)
+        // localStorage.setItem("user12", "Yuliya");
+        // upd("Yuliya");
     }
     const logout = () => {
         localStorage.removeItem("user12");
         upd(null);
     }
-    return (
-        <header>
+    return (<header>
             <Logo/>
             <div className="search-block">
-                <Search data={searchArr} setGoods={setGoods} setSearchResult={setSearchResult}/>
+                <Search 
+                   data={searchArr} 
+                   setGoods={setGoods} 
+                   setSearchResult={setSearchResult}/>
             </div>
             <nav className="header__menu">
                 {user && <>

@@ -1,10 +1,12 @@
+import { Link } from "react-router-dom";
 import "./style.css";
 import Logo from "../Logo";
 
 const links = [
-    {name: "Каталог", src: "/"},
+    {name: "Каталог", src: "/catalog"},
     {name: "Избраннное", src: "/"},
-    {name: "Корзина", src: "/"}
+    {name: "Корзина", src: "/"},
+    {name: "Тестовая страница", src:"/old"}
 ]
 
 export default () => {
@@ -16,7 +18,7 @@ export default () => {
             </div>
             <ul className="footer__nav">
                 {links.map(el => <li key={el.name}>
-                    <a href={el.src}>{el.name}</a>
+                    <Link to={el.src}>{el.name}</Link>
                 </li>)}
             </ul>
         </footer>

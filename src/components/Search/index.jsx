@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
+import {useNavigate} from "react-router-dom";
 import "./style.css";
 
 const Search = ({data, setGoods, setSearchResult}) => {
+    const navigate = useNavigate();
     const [text, setText] = useState("");
     const [num, setNum] = useState(0);
     const changeValue = (e) => {
+        navigate("/catalog");
         setText(e.target.value);
         // setNum(data.filter(el => el.name.toLowerCase().includes(e.target.value.toLowerCase())).length)
     }

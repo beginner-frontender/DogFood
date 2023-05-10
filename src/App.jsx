@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Routes, Route} from "react-router-dom"
+import { Routes, Route } from "react-router-dom"
 
 // import testData from "./assents/data.json";
 // import Card from "./components/Card/Card";
@@ -11,6 +11,8 @@ import Modal from "./components/Modal";
 import Home from "./pages/Home";
 import Catalog from "./pages/Catalog";
 import OldPage from "./pages/Old";
+import Profile from "./pages/Profile";
+import Product from "./pages/Product";
 
 // const promoData = ["=)", "*-*", "0|0", "x_x", ":)", ";(", "^_^"];
 // map преабразовывает 1 элемент массива в другой для всех элементов
@@ -72,14 +74,20 @@ const App = () => {
                 setSearchResult={setSearchResult}
                 setModalOpen={setModalOpen}
             />
-
-            <Routes>
-                <Route path="/" element={<Home user={user} setActive={setModalOpen}/>} />
-                <Route path="/catalog" element={<Catalog goods={goods}/>} />
-                <Route path="/old" element={<OldPage
-                    goods={goods}
-                    searchText={searchResult} />} />
-            </Routes>
+            <main>
+                <Routes>
+                    <Route path="/" element={<Home user={user} setActive={setModalOpen} />} />
+                    <Route path="/catalog" element={<Catalog
+                        goods={goods}
+                        setBaseData={setBaseData}
+                        userId={userId} />} />
+                    <Route path="/old" element={<OldPage
+                        goods={goods}
+                        searchText={searchResult} />} />
+                    <Route path="/profile" element={<Profile user={user} setUser={setUser} />} />
+                    <Route path="/product/:id" element={<Product />} />
+                </Routes>
+            </main>
 
             {/* <div className="container">
               {searchResult && <p className="search-result">{searchResult}</p>}

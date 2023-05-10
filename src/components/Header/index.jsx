@@ -6,7 +6,7 @@ import {
     Cart4, 
     PersonCircle, 
     BuildingUp, 
-    BuildingDown
+    // BuildingDown
 } from "react-bootstrap-icons";
 import Search from "../Search";
 
@@ -23,10 +23,10 @@ const Header = ({
         // localStorage.setItem("user12", "Yuliya");
         // upd("Yuliya");
     }
-    const logout = () => {
-        localStorage.removeItem("user12");
-        upd(null);
-    }
+    // const logout = () => {
+    //     localStorage.removeItem("user12");
+    //     upd(null);
+    // }
     return (<header>
             <Logo/>
             <div className="search-block">
@@ -43,7 +43,7 @@ const Header = ({
                     <Link to="/">
                         <Cart4 title="Корзина"/>
                     </Link>
-                    <Link to="/">
+                    <Link to="/profile">
                         <PersonCircle title="Личный кабинет"/>
                     </Link>
                 </>
@@ -51,7 +51,7 @@ const Header = ({
 
                 <span>
                     {!user && <BuildingUp title="Войти" onClick={login}/>}
-                    {user && <BuildingDown title="Выйти" onClick={logout}/>}
+                    {/* {user && <BuildingDown title="Выйти" onClick={logout}/>} */}
                 </span>
             </nav>
         </header>

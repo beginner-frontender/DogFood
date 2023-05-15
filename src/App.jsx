@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom"
+// import "bootstrap/dist/css/bootstrap.min.css"
 
 // import testData from "./assents/data.json";
 // import Card from "./components/Card/Card";
@@ -13,6 +14,7 @@ import Catalog from "./pages/Catalog";
 import OldPage from "./pages/Old";
 import Profile from "./pages/Profile";
 import Product from "./pages/Product";
+import AddProduct from "./pages/AddProduct";
 
 // const promoData = ["=)", "*-*", "0|0", "x_x", ":)", ";(", "^_^"];
 // map преабразовывает 1 элемент массива в другой для всех элементов
@@ -86,6 +88,7 @@ const App = () => {
                         searchText={searchResult} />} />
                     <Route path="/profile" element={<Profile user={user} setUser={setUser} />} />
                     <Route path="/product/:id" element={<Product />} />
+                    <Route path="/add/product" element={<AddProduct/>}/>
                 </Routes>
             </main>
 

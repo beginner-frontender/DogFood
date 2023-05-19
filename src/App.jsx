@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom"
+import Ctx from "./ctx";
 // import "bootstrap/dist/css/bootstrap.min.css"
 
 // import testData from "./assents/data.json";
@@ -64,16 +65,23 @@ const App = () => {
         setGoods(baseData)
     }, [baseData])
 
+//    export const Ctx = createContext({});
+
 
     return (
-        <>
+        <Ctx.Provider value={{
+            searchResult,
+            setSearchResult,
+            setBaseData,
+            baseData
+        }}>
             {/* upd - передали функцию setUser внутрь компонента Header, чтобы внутри использовать ее как слово upd() */}
             <Header
                 user={user}
                 upd={setUser}
                 searchArr={baseData}
                 setGoods={setGoods}
-                setSearchResult={setSearchResult}
+                // setSearchResult={setSearchResult}
                 setModalOpen={setModalOpen}
             />
             <main>
@@ -81,11 +89,10 @@ const App = () => {
                     <Route path="/" element={<Home user={user} setActive={setModalOpen} />} />
                     <Route path="/catalog" element={<Catalog
                         goods={goods}
-                        setBaseData={setBaseData}
-                        userId={userId} />} />
+                        userId={userId}
+                     />} />
                     <Route path="/old" element={<OldPage
-                        goods={goods}
-                        searchText={searchResult} />} />
+                        goods={goods} />} />
                     <Route path="/profile" element={<Profile user={user} setUser={setUser} />} />
                     <Route path="/product/:id" element={<Product />} />
                     <Route path="/add/product" element={<AddProduct/>}/>
@@ -104,8 +111,8 @@ const App = () => {
                 isActive={modalOpen}
                 setIsActive={setModalOpen}
                 setUser={setUser}
-            />
-        </>
+            /> 
+        </Ctx.Provider>
     )
 }
 

@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const Review = () => {
     const [description, setDescription] = useState("Напишите свой отзыв о товаре");
+    const { id } = useParams();
+    const navigate = useNavigate();
 
     const clearForm = () => {
         setDescription("Напишите свой отзыв о товаре");
@@ -15,7 +17,7 @@ const Review = () => {
             description: description,
         };
         console.log(body)
-        fetch(`https://api.react-learning.ru/products/review/${_id}`, {
+        fetch(`https://api.react-learning.ru/products/review/${id}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -25,10 +27,10 @@ const Review = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                console.log(data, id);
                 if (!data.err && !data.error) {
                     clearForm();
-                    navigate(`/product/review/${data._id}`)
+                    navigate(`/product/review/${id}`)
                 }
             })
     }

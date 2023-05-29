@@ -55,3 +55,7 @@ p{
 .info-link:hover{
   text-shadow: 0 0 7px yellow;
 }
+.review{
+  gap: 12px;
+  border: 1px solid forestgreen;
+}

@@ -25,7 +25,7 @@ const Slider = ({desktop = 4, mobile = 1}) => {
     }, [])
 
     useEffect(() => {
-        console.log(baseData)
+        // console.log(baseData)
         if (baseData.length) {
             setGds(baseData.reduce((acc, el, i) => {
                 if (i % cnt === 0) {
@@ -39,7 +39,7 @@ const Slider = ({desktop = 4, mobile = 1}) => {
     }, [baseData, cnt])
 
     useEffect(() => {
-        console.log(gds)
+        // console.log(gds)
     }, [gds])
 
     return <Container style={{gridTemplateColumns: "1fr"}}>

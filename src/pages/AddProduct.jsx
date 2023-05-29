@@ -55,7 +55,7 @@ const AddProduct = () => {
             pictures: link,
             tags: tagWord && !tags.includes(tagWord) ? [...tags, tagWord] : tags
         };
-        console.log(body);
+        // console.log(body);
         fetch("https://api.react-learning.ru/products", {
             method: "POST",
             headers: {

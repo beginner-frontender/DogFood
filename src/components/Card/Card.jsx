@@ -3,14 +3,7 @@ import { Link } from "react-router-dom";
 import { SuitHeart, SuitHeartFill } from "react-bootstrap-icons";
 import "./card.css";
 import Ctx from "../../ctx";
-// const Card = (props) => {
-//     return <div className="card-lite">
-//         <img src={props.img} alt={props.name}/>
-//         <h4>{props.price} ₽</h4>
-//         <p>{props.name}</p>
-//         <button>Купить</button>
-//     </div>
-// }
+
 const Card = ({
     discount,
     likes,

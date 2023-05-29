@@ -16,6 +16,7 @@ import OldPage from "./pages/Old";
 import Profile from "./pages/Profile";
 import Product from "./pages/Product";
 import AddProduct from "./pages/AddProduct";
+import Review from "./pages/Review"
 
 // const promoData = ["=)", "*-*", "0|0", "x_x", ":)", ";(", "^_^"];
 // map преабразовывает 1 элемент массива в другой для всех элементов
@@ -47,7 +48,7 @@ const App = () => {
     }, [user])
 
     useEffect(() => {
-        console.log("token", token);
+        // console.log("token", token);
         if (token) {
             fetch("https://api.react-learning.ru/products", {
                 headers: {
@@ -96,16 +97,10 @@ const App = () => {
                     <Route path="/profile" element={<Profile user={user} setUser={setUser} />} />
                     <Route path="/product/:id" element={<Product />} />
                     <Route path="/add/product" element={<AddProduct/>}/>
+                    <Route path="/product/:id/review" element={<Review />} />
                 </Routes>
             </main>
 
-            {/* <div className="container">
-              {searchResult && <p className="search-result">{searchResult}</p>}
-              {goods.map((pro, i) => (
-                  <Card key={i} img={pro.pictures} name={pro.name} price={pro.price} />
-              ))}
-              {promoData.map(el => <Promo key={el} text={el}/>)}
-          </div> */}
             <Footer />
             <Modal
                 isActive={modalOpen}

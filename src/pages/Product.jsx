@@ -6,7 +6,7 @@ import Ctx from "../ctx";
 
 
 
-const Product = (user) => {
+const Product = ({user}) => {
     const { searchResult } = useContext(Ctx);
     const { id } = useParams()
     const [data, setData] = useState({});
@@ -18,29 +18,26 @@ const Product = (user) => {
         })
             .then(res => res.json())
             .then(serverData => {
-                console.log(id, serverData);
+                // console.log(id, serverData);
                 setData(serverData);
 
             })
     }, [])
 
-    const delReview = (id, e) => {
+    const delReview = (event, rev) => {
 
-        if (data.author === user) {
+        if (rev.author.name === user) {
 
-            fetch(`https://api.react-learning.ru/products/review/${id}/${reviews._id}`, {
+            fetch(`https://api.react-learning.ru/products/review/${id}/${rev._id}`, {
                 method: "delete",
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${localStorage.getItem("token12")}`
-                },
-                body: JSON.stringify(body)
+                }
             })
-                .then(res => res.json())
-                .then(data => {
-                    data = data.filter()
-                    localStorage.setItem("token12", JSON.stringify(data));
-                    e.remove();
+                .then(() => {
+                    console.log(event)
+                    setData(prev => ({...prev, reviews: prev.reviews.filter(review =>review._id !== rev._id)}))
                 })
         }
     }
@@ -62,9 +59,8 @@ const Product = (user) => {
                     <Col xs={12}>
                         <h3>Отзывы: </h3>
                         <div className="review-box">
-                            {/* <p>автор: {data.author.name}</p> */}
 
-                            {data.reviews.map((rev, i) => <p key={i} className="review"> {rev.text} <XCircle onClick={delReview}/></p>)}
+                            {data.reviews.map((rev, i) => <p key={i} className="review"> {rev.text} <XCircle onClick={(e)=>delReview(e,rev)}/></p>)}
                         </div>
                     </Col>
                 </Row>

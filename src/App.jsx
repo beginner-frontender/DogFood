@@ -97,7 +97,7 @@ const App = () => {
                     <Route path="/profile" element={<Profile user={user} setUser={setUser} />} />
                     <Route path="/product/:id" element={<Product />} />
                     <Route path="/add/product" element={<AddProduct/>}/>
-                    <Route path="/product/:id/review" element={<Review />} />
+                    <Route path="/product/:id/review" element={<Review user={user} setUser={setUser}/>} />
                 </Routes>
             </main>
 

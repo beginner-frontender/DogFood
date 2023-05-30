@@ -33,6 +33,7 @@ const Review = () => {
                 if (!data.err && !data.error) {
                     clearForm();
                     navigate(`/product/${data._id}`)
+            
                 }
             })
     }

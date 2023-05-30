@@ -18,9 +18,6 @@ import Product from "./pages/Product";
 import AddProduct from "./pages/AddProduct";
 import Review from "./pages/Review"
 
-// const promoData = ["=)", "*-*", "0|0", "x_x", ":)", ";(", "^_^"];
-// map преабразовывает 1 элемент массива в другой для всех элементов
-
 
 
 const App = () => {
@@ -28,12 +25,11 @@ const App = () => {
     const [user, setUser] = useState(localStorage.getItem("user12"));
     const [userId, setUserId] = useState(localStorage.getItem("user12-id"));
     const [token, setToken] = useState(localStorage.getItem("token12"));
-    // const [goods, setGoods] = useState(testData);
     const [baseData, setBaseData] = useState([]);
     const [goods, setGoods] = useState(baseData);
     const [searchResult, setSearchResult] = useState("");
     const [modalOpen, setModalOpen] = useState(false);
-    // Сохрани в переменную user то значение, что находится внутри useState
+
 
     useEffect(() => {
         if (user) {
@@ -57,7 +53,7 @@ const App = () => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data);
+                    // console.log(data);
                     setBaseData(data.products);
                 })
         }
@@ -97,7 +93,7 @@ const App = () => {
                     <Route path="/profile" element={<Profile user={user} setUser={setUser} />} />
                     <Route path="/product/:id" element={<Product />} />
                     <Route path="/add/product" element={<AddProduct/>}/>
-                    <Route path="/product/:id/review" element={<Review user={user} setUser={setUser}/>} />
+                    <Route path="/product/:id/review" element={<Review user={user}/>} />
                 </Routes>
             </main>
 

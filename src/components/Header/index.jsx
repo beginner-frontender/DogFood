@@ -39,11 +39,12 @@ const Header = ({
             </div>
             <nav className="header__menu">
                 {user && <>
-                    <Link to="/">
+                    <Link to="/favorites">
                         <BalloonHeart title="Избранное"/>
                     </Link>
-                    <Link to="/">
+                    <Link to="/basket" className="header__link">
                         <Cart4 title="Корзина"/>
+                        <span className="header__badge">{}</span>
                     </Link>
                     <Link to="/profile">
                         <PersonCircle title="Личный кабинет"/>

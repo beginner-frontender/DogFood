@@ -4,20 +4,16 @@ import Ctx from "../../ctx";
 import "./style.css";
 
 
-const Search = ({data, setGoods, }) => {
-    const {setSearchResult} = useContext(Ctx);
+const Search = () => {
+    const {setSearchResult,  baseData, setGoods} = useContext(Ctx);
     const navigate = useNavigate();
     const [text, setText] = useState("");
     const [num, setNum] = useState(0);
     const changeValue = (e) => {
         navigate("/catalog");
         setText(e.target.value);
-        // setNum(data.filter(el => el.name.toLowerCase().includes(e.target.value.toLowerCase())).length)
     }
-    const changeText = () => {
-        console.log("click")
-        setText("Привет!")
-    }
+   
     useEffect(() => {
         let str = ""
         if(num && text){
@@ -31,15 +27,12 @@ const Search = ({data, setGoods, }) => {
     }, [num, text])
 
     useEffect(() => {
-        let result = data.filter(el => el.name.toLowerCase().includes(text.toLowerCase()))
+        let result = baseData.filter(el => el.name.toLowerCase().includes(text));
         setGoods(result);
         setNum(result.length);
-        // console.log(result);
-    }, [text])
+    }, [text, baseData])
     return <>
         <input className="search" type="search" value={text} onChange={changeValue}/>
-        {/* <button onClick={changeText}>Тык {num} раз </button> */}
-        {/* {text && <p>по запросу {text} найдено {num} товаров</p>} */}
     </>
 }
 

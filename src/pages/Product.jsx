@@ -18,7 +18,6 @@ const Product = ({user}) => {
         })
             .then(res => res.json())
             .then(serverData => {
-                // console.log(id, serverData);
                 setData(serverData);
 
             })
@@ -27,7 +26,6 @@ const Product = ({user}) => {
     const delReview = (event, rev) => {
         console.log(rev.author.name, user)
         if (rev.author.name === user) {
-            
 
             fetch(`https://api.react-learning.ru/products/review/${id}/${rev._id}`, {
                 method: "delete",
